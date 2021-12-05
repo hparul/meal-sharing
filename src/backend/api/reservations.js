@@ -4,7 +4,7 @@ const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    const reservations = await knex("Reservation");
+    const reservations = await knex("reservation");
     response.json(reservations);
   } catch (error) {
     throw error;
@@ -13,7 +13,7 @@ router.get("/", async (request, response) => {
 
 router.get("/", async (request, response) => {
   try {
-    const reservations = await knex("Reservation");
+    const reservations = await knex("reservation");
     response.json(reservations);
   } catch (error) {
     throw error;
@@ -23,7 +23,7 @@ router.get("/", async (request, response) => {
 router.post("/", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const reservations = await knex("Reservation")
+    const reservations = await knex("reservation")
       .insert({
         id: request.body.id,
 
@@ -45,7 +45,7 @@ router.post("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const reservations = await knex("Reservation").where(
+    const reservations = await knex("reservation").where(
       "id",
       request.params.id
     );
@@ -58,7 +58,7 @@ router.get("/:id", async (request, response) => {
 router.put("/:id", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const meals = await knex("Reservation")
+    const meals = await knex("reservation")
       .update({
         id: request.body.id,
         number_of_guests: request.body.number_of_guests,
@@ -81,7 +81,7 @@ router.put("/:id", async (request, response) => {
 router.delete("/:id", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const reservations = await knex("Reservation")
+    const reservations = await knex("reservation")
       .where("id", request.params.id)
       .del()
       .then(function (result) {
