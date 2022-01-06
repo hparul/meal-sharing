@@ -1,0 +1,39 @@
+.my-footer {
+  background-color: rgb(247, 155, 128);
+  grid-column: 1/-1;
+}
+/* setting a flexbox*/
+footer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: black;
+  font: normal;
+}
+
+footer div {
+  padding: 1.25em;
+  line-height: 1.87em;
+  font-family: "Times New Roman", Times, serif;
+  justify-content: space-around;
+}
+
+footer ul {
+  list-style-type: none;
+  text-decoration: none;
+}
+footer a {
+  color: black;
+  font: bolder;
+  text-decoration: none;
+}
+
+@media (max-width: 680px) {
+  footer {
+    display: block;
+    color: white;
+  }
+  footer a {
+    color: white;
+  }
+}

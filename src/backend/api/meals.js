@@ -13,7 +13,7 @@ const knex = require("../database");
   }
 });  */
 
-/*  router.get("/", async (request, response) => {
+   /* router.get("/", async (request, response) => {
   try {
     console.log('in get all meals');
     //console.log(meals)
@@ -112,7 +112,7 @@ router.get("/", async (request, response) => {
     const limit = request.query.limit;
 
     if (limit !== undefined && limit !== "" && maxPrice !== undefined && maxPrice !== "") {
-      const filteredMeals = meals.filter((meal) => meal.price < maxPrice);
+      const filteredMeals = meals.filter((meal) => meal.price < parseInt(maxPrice));
       const newMeals = [];
       console.log(limit);
       for (let i = 0; i < limit; i++) {
@@ -124,7 +124,7 @@ router.get("/", async (request, response) => {
     }
     else if (maxPrice !== undefined && maxPrice !== "") {
       console.log("maxPrice");
-      const filteredMeals = meals.filter((meal) => meal.price < maxPrice);
+      const filteredMeals = meals.filter((meal) => meal.price < parseInt(maxPrice));
       response.send(filteredMeals);
     } else if (titles !== undefined && titles !== "") {
       console.log("titles");
@@ -132,13 +132,7 @@ router.get("/", async (request, response) => {
       response.send(filteredTitle);
 
     } else if (availableReservations !== undefined && availableReservations !== "") {
-      const filteredReservations = await knex("meal")
-        /* .join('reservation', 'meal.id', '=', 'reservation.meal_id')
-        //.select('meal_id','max_reservations','number_of_guests')
-        .where('meal.max_reservations', '>', 'reservation.number_of_guests');
-        console.log(filteredReservations);
-      response.send(filteredReservations);*/
-     
+      const filteredAvailableReservations = await knex("meal")
       .join("reservation", "meal.id", "reservation.meal_id")
       .select(
         "reservation.meal_id",
@@ -150,10 +144,10 @@ router.get("/", async (request, response) => {
       .sum("reservation.number_of_guests")
       .groupBy("meal.id")
       .having(
-        knex.raw("max_reservations > sum(`reservation`.`number_of_guests`)")
+        knex.raw("meal.max_reservations > sum(`reservation`.`number_of_guests`)")
       );
-      console.log(filteredReservations);
-      response.send(filteredReservations);
+      console.log(filteredAvailableReservations);
+      response.send(filteredAvailableReservations);
     } else if (createdAfter !== undefined && createdAfter !== "") {
       console.log(createdAfter);
       //console.log(meals);
