@@ -10,7 +10,7 @@ const MealLinks = () => {
   const[showForm,setShowForm]=useState(false);
 
   const GetMeals = useCallback(() => {
-    let apiUrl = "http://localhost:3000/api/meals";
+    let apiUrl = "/api/meals";
     console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())
@@ -76,7 +76,7 @@ const MealLinks = () => {
         id: count,
       }),
     };
-    fetch("http://localhost:3000/api/meals", requestOptions)
+    fetch("/api/meals", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

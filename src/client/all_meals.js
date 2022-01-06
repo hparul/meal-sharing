@@ -8,7 +8,7 @@ const AllMeals = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const GetMeals = useCallback(() => {
-    let apiUrl = "http://localhost:3000/api/meals";
+    let apiUrl = "/api/meals";
     console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())

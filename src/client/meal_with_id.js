@@ -13,7 +13,7 @@ const[isReservationAvailable,setIsReservationAvailable]=useState(false);
 
   const SearchMeal = useCallback(() => {
     console.log(props.id);
-    let apiUrl = "http://localhost:3000/api/meals/" + props.id;
+    let apiUrl = "/api/meals/" + props.id;
     console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())
@@ -38,7 +38,7 @@ const[isReservationAvailable,setIsReservationAvailable]=useState(false);
 
     console.log("in findAvailableReservations");
     console.log(props.id);
-    let apiUrl = "http://localhost:3000/api/meals/?availableReservations=true";
+    let apiUrl = "/api/meals/?availableReservations=true";
     console.log(apiUrl);
     fetch(apiUrl)
       .then((res) => res.json())
@@ -101,7 +101,7 @@ const[isReservationAvailable,setIsReservationAvailable]=useState(false);
         id: props.id + count,
       }),
     };
-    fetch("http://localhost:3000/api/reservations", requestOptions)
+    fetch("/api/reservations", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
