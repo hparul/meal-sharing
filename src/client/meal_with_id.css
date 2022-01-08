@@ -20,6 +20,16 @@ body {
   color: rgb(7, 175, 7);
   background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v546batch3-mynt-34-badgewatercolor_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=89288ef4b47127f7f34a5998b50e4470");
 }
+.reviews {
+  text-align: center;
+  grid-column: 1/-1;
+  background-color: beige;
+  padding: 2em 2em;
+  font-size: larger;
+  font-weight: bolder;
+  color: rgb(7, 175, 7);
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT2-ehTql6ZDcAyryrtMPIMue6eVeDoJGj6g&usqp=CAU");
+}
 
 .container {
   position: relative;
@@ -113,6 +123,17 @@ h2:after {
 
 .btn:hover {
   background-color: #27ae60;
+}
+.review-btn {
+  width: 50%;
+  padding: 0.5rem 1rem;
+  background-color: #12eb70;
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .field:focus {

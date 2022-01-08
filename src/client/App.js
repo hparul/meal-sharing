@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import AllMeals from "./all_meals";
 import MealsWithId from "./meal_with_id";
-import MealLinks from "./meallinks";
+import MealLinks from "./meal_links";
 import NavBar from "./navbar";
 import Footer from "./footer";
 import Error from "./error";

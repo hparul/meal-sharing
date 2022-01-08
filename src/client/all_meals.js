@@ -50,6 +50,7 @@ const AllMeals = () => {
                       price={meal.price}
                       description={meal.description}
                       setMeals={setMeals}
+                      key={meal.id}
                     />
                   </div>
                   <hr></hr>

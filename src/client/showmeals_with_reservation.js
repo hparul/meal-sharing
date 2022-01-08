@@ -7,6 +7,7 @@ const ShowMeals = (props) => {
         {props.title} : "{props.description}"
       </div>
       <div>Price:{props.price}DKK</div>
+      <div>Available Reservations:{props.availableReservations}</div>
     </div>
   );
 };

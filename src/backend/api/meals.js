@@ -146,8 +146,37 @@ router.get("/", async (request, response) => {
       .having(
         knex.raw("meal.max_reservations > sum(`reservation`.`number_of_guests`)")
       );
-      console.log(filteredAvailableReservations);
-      response.send(filteredAvailableReservations);
+
+
+      let availableReservations = [];
+      const meals = await knex("meal")
+      const reservations = await knex("reservation")
+      for (let i = 0; i < meals.length; i++) {
+        let mealFound = false;
+        let reservationCount = 0;
+        for (let j = 0; j < reservations.length; j++) {
+          if (meals[i].id === reservations[j].meal_id) {
+            mealFound = true;
+            reservationCount = reservationCount + reservations[j].number_of_guests;
+          } 
+        }
+
+        if (mealFound) {
+          if (meals[i].max_reservations > reservationCount) {
+            meals[i]["availableReservations"] = meals[i].max_reservations - reservationCount;
+            availableReservations.push(meals[i]);
+          }
+        } else {
+          meals[i]["availableReservations"] = meals[i].max_reservations;
+          availableReservations.push(meals[i]);
+        }
+        
+      }
+     
+      console.log(availableReservations);
+
+      //console.log(filteredAvailableReservations);
+      response.send(availableReservations);
     } else if (createdAfter !== undefined && createdAfter !== "") {
       console.log(createdAfter);
       //console.log(meals);

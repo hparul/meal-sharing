@@ -7,7 +7,7 @@ const MealLinks = () => {
   const [max_reservations, setMaxReservations] = useState("");
   const [price, setPrice] = useState("");
   const [meals, setMeals] = useState([]);
-  const[showForm,setShowForm]=useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const GetMeals = useCallback(() => {
     let apiUrl = "/api/meals";
@@ -54,9 +54,9 @@ const MealLinks = () => {
     console.log("price", price);
   };
 
-  const ToShowForm=()=>{
+  const ToShowForm = () => {
     setShowForm(true);
-  }
+  };
 
   let count = meals.length;
 
@@ -85,74 +85,77 @@ const MealLinks = () => {
 
   return (
     <div>
-      
       <div className="container">
         <div className="contact-box">
           <div className="left"></div>
-            <div className="right">
-
+          <div className="right">
             <hr></hr>
             <h2>Cuisines</h2>
             {meals.map((user) => {
               let url = "/meals/" + user.id;
               return (
                 <div>
-                  <div className="meal-links" >
+                  <div className="meal-links">
                     <a href={url}>{user.title}</a>
                   </div>
                   <hr></hr>
                 </div>
               );
             })}
-            <button className="btn" onClick={ToShowForm}>Add more meals</button>
-          
-            <form style={{display: showForm ? "inline-block" : "none"}}> 
-            <h2>Add a meal here</h2>
-           
+            <button className="btn" onClick={ToShowForm}>
+              Add more meals
+            </button>
+
+            <form style={{ display: showForm ? "inline-block" : "none" }}>
+              <h2>Add a meal here</h2>
+
               <label>title:</label>
               <input
                 className="field"
                 type="text"
-                value={title} required
+                value={title}
+                required
                 onChange={onChangeTitle}
               />
-              
+
               <label>description:</label>
               <input
                 className="field"
                 type="text"
-                value={description} required
+                value={description}
+                required
                 onChange={onChangeDescription}
               />
-             
+
               <label>location:</label>
               <input
                 className="field"
                 type="text"
-                value={location} required
+                value={location}
+                required
                 onChange={onChangeLocation}
               />
-              
-              
-            
+
               <label>max_reservations:</label>
               <input
                 className="field"
                 type="number"
-                value={max_reservations} required
+                value={max_reservations}
+                required
                 onChange={onChangeMaxReservations}
               />
-              
+
               <label>price:</label>
               <input
                 className="field"
                 type="number"
-                value={price} required
+                value={price}
+                required
                 onChange={onChangePrice}
               />
-              
+
               <button onClick={SubmitForm}>Add Meal</button>
-              </form>
+            </form>
           </div>
         </div>
       </div>

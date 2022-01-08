@@ -26,7 +26,7 @@ const Footer = () => {
             <br />
             of the page for
             <br />
-            mealsharing app
+            meal-sharing app
           </p>
         </div>
 
