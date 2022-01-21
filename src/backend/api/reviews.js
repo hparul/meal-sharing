@@ -4,34 +4,34 @@ const knex = require("../database");
 
 router.get("/", async (request, response) => {
   try {
-    const reservations = await knex("reservation");
-    response.json(reservations);
+    const reviews = await knex("review");
+    response.json(reviews);
   } catch (error) {
     throw error;
   }
 });
 
-router.get("/", async (request, response) => {
+/* router.get("/", async (request, response) => {
   try {
     const reservations = await knex("reservation");
     response.json(reservations);
   } catch (error) {
     throw error;
   }
-});
+}); */
 
 router.post("/", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const reservations = await knex("reservation")
+    const reviews = await knex("review")
       .insert({
         id: request.body.id,
 
+        title: request.body.title,
+        description: request.body.description,
+        stars: request.body.stars,
         created_date: request.body.created_date,
-        contact_phonenumber: request.body.contact_phonenumber,
-        contact_name: request.body.contact_name,
-        contact_email: request.body.contact_email,
-        number_of_guests: request.body.number_of_guests,
+        
         meal_id: request.body.meal_id,
       })
       .then(function (result) {
@@ -45,17 +45,17 @@ router.post("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
-    const reservations = await knex("reservation").where(
-      "id",
+    const reviews = await knex("review").where(
+      "meal_id",
       request.params.id
     );
-    response.json(reservations);
+    response.json(reviews);
   } catch (error) {
     throw error;
   }
 });
 
-router.put("/:id", async (request, response) => {
+/* router.put("/:id", async (request, response) => {
   try {
     // knex syntax for selecting things. Look up the documentation for knex for further info
     const meals = await knex("reservation")
@@ -90,6 +90,6 @@ router.delete("/:id", async (request, response) => {
   } catch (error) {
     throw error;
   }
-});
+}); */
 
 module.exports = router;

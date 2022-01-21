@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+ //import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import TestComponent from "./components/TestComponent/TestComponent";
+
+import AllMeals from "./all_meals";
+import MealsWithId from "./meal_with_id";
+import MealLinks from "./meal_links";
+import NavBar from "./navbar";
+import Footer from "./footer";
+import Error from "./error";
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/">
-        <p>test</p>
-      </Route>
-      <Route exact path="/lol">
-        <p>lol</p>
-      </Route>
-      <Route exact path="/test-component">
-        <TestComponent></TestComponent>
-      </Route>
-    </Router>
+    <>
+      <NavBar/>
+      <Switch>
+        <Route exact path="/" component={AllMeals}/>
+        <Route exact path="/meals/:id" component={(props) => <MealsWithId id={props.match.params.id} />}/>
+        <Route exact path="/meals" component={MealLinks}/>
+        <Route component={Error}/>
+      </Switch>
+      <Footer/>
+    </>
   );
 }
 
